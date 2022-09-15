@@ -7,7 +7,6 @@ export const addUser = createAsyncThunk('user/AddUser', async (user) => {
 
 export const addUserGenerate = createAsyncThunk('user/addUserGenerate', async () => {
     const res = await AddUserGenerate();
-    console.log(res)
     return res;
 })
 
@@ -29,7 +28,6 @@ const userSlice = createSlice({
         [addUser.fulfilled]: (state, action) => {
             state.status = true,
             state.data = state.data.concat(action.payload)
-            console.log("dataUser", action.payload)
         },
         [addUser.rejected]: (state, action) => {
             state.status = 'failed'
@@ -50,8 +48,6 @@ const userSlice = createSlice({
                     picture: data.picture.large
                 }
             }))
-            // console.log("result", action.payload.results)
-            // console.log("data", state.data)
         },
         [addUserGenerate.rejected]: (state, action) => {
             state.status = 'failed'

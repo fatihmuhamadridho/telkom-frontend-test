@@ -13,10 +13,10 @@ const FormHomePage = ({
       <form className="space-y-6" action="">
         {formInput.map((data, index) => {
           return (
-            <div key={index} className="flex flex-col space-y-1">
-              <label htmlFor="">{data.label}</label>
+            <div key={index} className="flex flex-col text-[14px] space-y-1">
+              <label className="font-medium" htmlFor="">{data.label}</label>
               <input
-                className="p-2 border-[1px] border-[#D1D5DB] rounded-[6px]"
+                className="p-2 font-light border-[1px] border-[#D1D5DB] rounded-[6px]"
                 type={data.type}
                 name={data.name}
                 placeholder={data.label}
@@ -24,7 +24,7 @@ const FormHomePage = ({
                 value={userInput?.[data.name]}
               />
               {data.type === "password" && (
-                <p className="text-[14px] text-[#6B7280]">
+                <p className="text-[#6B7280]">
                   Minimum of 6 characters, with upper & lower case, a number and
                   a symbol.
                 </p>

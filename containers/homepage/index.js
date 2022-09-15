@@ -4,6 +4,7 @@ import {
   deleteAllUser,
 } from "@redux/slices/userSlice";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formInput } from "./dummy/index";
@@ -79,10 +80,11 @@ const HomePage = () => {
     dispatch(deleteAllUser());
   };
 
-  console.log(usersState)
-
   return (
     <main>
+      <Head>
+        <title>Frontend Test</title>
+      </Head>
       <section className="px-[48px] pt-[48px] flex justify-center">
         <div className="pt-[33px] w-[768px]">
           <div className="pb-6">
@@ -104,7 +106,7 @@ const HomePage = () => {
       </section>
       <section className="px-[32px] w-full">
         <div className="py-[48px] w-full flex justify-center items-center">
-          <hr className="w-full border-[1px] border-[#979797]" />
+          <hr className="w-full bg-[white] border-[1px] border-[#979797]" />
           <button
             type="button"
             className={`w-full max-w-[180px] ${usersState.data.length !== 0 ? "text-[#E54B41]" : "text-[#979797]"}`}
@@ -112,7 +114,7 @@ const HomePage = () => {
           >
             Clear All List User
           </button>
-          <hr className="w-full border-[1px] border-[#979797]" />
+          <hr className="w-full bg-[white] border-[1px] border-[#979797]" />
         </div>
         <input
           className="py-[9px] px-[13px] border-[1px] rounded-[6px]"
@@ -122,7 +124,7 @@ const HomePage = () => {
           value={searchInput}
         />
         {usersState.data.length !== 0 ? (
-          <div className="py-[48px] grid gap-[24px] over:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="min-h-[425px] py-[48px] grid gap-[24px] over:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {usersState?.data
               ?.filter((user) => {
                 if (searchInput === "") {
